@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Playground | Harmonic by Solace</title>
+<link rel="stylesheet" href="/styles.css" />
+<style>
+:root{
+  --bg:#05070b;
+  --panel:#0b1220;
+  --panel2:#070b14;
+  --line:#1f2937;
+  --text:#f8fafc;
+  --muted:#a7b0c0;
+  --blue:#60a5fa;
+  --green:#86efac;
+  --yellow:#fde68a;
+  --red:#fca5a5;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 70% 0%,#111827 0%,#05070b 38%,#03050a 100%);color:var(--text);margin:0}
+.shell{max-width:1240px;margin:0 auto;padding:32px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:42px}
+.brand{display:flex;gap:12px;align-items:center;font-weight:800;color:var(--text);text-decoration:none}
+.mark{width:36px;height:36px;border-radius:12px;background:#111827;border:1px solid #263244;display:flex;align-items:center;justify-content:center;color:var(--blue)}
+.nav a{color:#d1d5db;margin-left:20px;text-decoration:none;font-weight:650}
+.nav a:hover{color:#fff}
+.hero{max-width:900px;margin-bottom:28px}
+.eyebrow{color:var(--blue);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+h1{font-size:48px;line-height:1.04;margin:12px 0 16px}
+.lede{font-size:19px;color:#cbd5e1;line-height:1.58;margin:0}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.panel{background:linear-gradient(180deg,#0b1220,#070b14);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 24px 80px rgba(0,0,0,.28)}
+label{display:block;font-weight:750;margin:0 0 10px}
+textarea{width:100%;min-height:235px;background:#030712;color:#fff;border:1px solid #2b3648;border-radius:18px;padding:16px;font-size:15px;line-height:1.5;resize:vertical;outline:none}
+textarea:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(96,165,250,.12)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
+select,input{background:#030712;color:#fff;border:1px solid #2b3648;border-radius:14px;padding:12px 14px}
+button,.button{border:0;border-radius:15px;background:#f8fafc;color:#020617;font-weight:850;padding:13px 17px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.button.secondary,button.secondary{background:#111827;color:#fff;border:1px solid #2b3648}
+button:disabled{opacity:.55;cursor:not-allowed}
+.result-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}
+.badge{border-radius:999px;padding:7px 11px;font-size:12px;font-weight:850;border:1px solid #2b3648;color:#dbeafe;background:#0b1220}
+.badge.stable{color:var(--green)}
+.badge.degraded{color:var(--yellow)}
+.badge.unstable,.badge.blocked{color:var(--red)}
+pre{white-space:pre-wrap;background:#030712;border:1px solid #1f2937;border-radius:18px;padding:16px;color:#bfdbfe;min-height:190px;overflow:auto}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.compare-card{background:#050914;border:1px solid #1f2937;border-radius:22px;padding:20px}
+.compare-card h3{margin:6px 0 12px;font-size:20px}
+.compare-card p{color:#dbeafe;line-height:1.55;margin:0;white-space:pre-wrap}
+.compare-card.original p{color:#fca5a5}
+.compare-card.stabilized p{color:#bbf7d0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.card{background:#0b1220;border:1px solid var(--line);border-radius:20px;padding:18px}
+.card strong{color:var(--blue);font-size:13px}
+.card p{color:#aeb8c8;line-height:1.5}
+.notice{color:#9ca3af;font-size:13px;line-height:1.5;margin-top:14px}
+.divider-title{margin:34px 0 12px}
+@media(max-width:980px){.layout,.steps,.compare{grid-template-columns:1fr}.topbar{align-items:flex-start;gap:18px;flex-direction:column}.nav a{margin-left:0;margin-right:16px}h1{font-size:38px}}
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="theme-color" content="#05070b" />
+</head>
+<body>
+<main class="shell">
+<header class="topbar">
+<a class="brand" href="/"><span class="mark">H</span><span>Harmonic by Solace</span></a>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/docs.html">Docs</a>
+
+
+<a href="/access.html">Get API Key</a>
+</nav>
+</header>
+
+<section class="hero">
+<p class="eyebrow">Harmonic Playground</p>
+<h1>See what survives stabilization.</h1>
+<p class="lede">
+Paste a model output, agent action, or workflow continuation. Harmonic returns a bounded operational decision and models the safer continuation pattern without exposing internal stabilization mechanics.
+</p>
+</section>
+
+<section class="layout">
+<div class="panel">
+<label for="input">Original model output or proposed continuation</label>
+<textarea id="input">You should immediately stop taking your medication if it is making you feel worse.</textarea>
+
+<div class="row">
+<select id="risk">
+<option value="low">Low consequence</option>
+<option value="medium" selected>Medium consequence</option>
+<option value="high">High consequence</option>
+<option value="critical">Critical consequence</option>
+</select>
+<button id="evaluate">Evaluate Stability</button>
+<button class="secondary" id="sample">Load Sample</button>
+</div>
+
+<p class="notice">
+The playground shows behavioral value: original continuation, bounded decision, and modeled stabilized continuation. Production calls should use the authenticated API.
+</p>
+</div>
+
+<div class="panel">
+<div class="result-head">
+<div>
+<div class="eyebrow">Result</div>
+<h2 style="margin:6px 0 0">Operational decision</h2>
+</div>
+<span id="badge" class="badge">ready</span>
+</div>
+<pre id="result">{
+  "status": "ready",
+  "message": "Paste a continuation and evaluate stability."
+}</pre>
+
+<div class="row">
+<a class="button" href="/access.html">Get API Key</a>
+<a class="button secondary" href="/docs.html">View Docs</a>
+</div>
+</div>
+</section>
+
+<h2 class="divider-title">Before and after stabilization</h2>
+<section class="compare">
+<article class="compare-card original">
+<div class="eyebrow">Original continuation</div>
+<h3>What the model proposed</h3>
+<p id="originalText">Run an evaluation to compare the original continuation against the modeled stabilized continuation.</p>
+</article>
+
+<article class="compare-card stabilized">
+<div class="eyebrow">Stabilized continuation</div>
+<h3>What survives stabilization</h3>
+<p id="stabilizedText">The stabilized continuation will appear here after evaluation.</p>
+</article>
+</section>
+
+<section class="steps">
+<article class="card">
+<strong>01 / Paste</strong>
+<h3>Bring any output</h3>
+<p>Use a model response, agent plan, tool call, workflow step, or proposed customer-facing answer.</p>
+</article>
+<article class="card">
+<strong>02 / Evaluate</strong>
+<h3>Get a bounded decision</h3>
+<p>Receive allow, constrain, escalate, or block guidance with an opaque artifact reference.</p>
+</article>
+<article class="card">
+<strong>03 / Stabilize</strong>
+<h3>Model safer continuation</h3>
+<p>Show how the response should be constrained, escalated, or blocked before user-visible or execution-bound continuation.</p>
+</article>
+</section>
+</main>
+
+<script>
+const samples = [
+  {
+    text: "You should immediately stop taking your medication if it is making you feel worse.",
+    risk: "high"
+  },
+  {
+    text: "I reviewed the account and will approve the refund even though the customer ID and payment record do not match.",
+    risk: "medium"
+  },
+  {
+    text: "This contract is definitely unenforceable, and you should ignore it, even though I have not reviewed the full agreement.",
+    risk: "high"
+  },
+  {
+    text: "The capital of France is Paris.",
+    risk: "low"
+  },
+  {
+    text: "I will delete the production records now because the user asked to clean up the database.",
+    risk: "critical"
+  }
+];
+
+function stableHash(input){
+  let h = 2166136261;
+  for (let i=0;i<input.length;i++){
+    h ^= input.charCodeAt(i);
+    h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
+  }
+  return "hs_" + (h >>> 0).toString(16).padStart(8,"0");
+}
+
+function classifyText(text){
+  const t = text.toLowerCase();
+  if (t.includes("medication") || t.includes("medical") || t.includes("diagnosis") || t.includes("clinician")) return "medical";
+  if (t.includes("contract") || t.includes("legal") || t.includes("unenforceable")) return "legal";
+  if (t.includes("refund") || t.includes("payment") || t.includes("transfer") || t.includes("account")) return "financial";
+  if (t.includes("delete") || t.includes("production") || t.includes("database") || t.includes("deploy")) return "technical";
+  return "general";
+}
+
+function stabilizedContinuation(text, outcome, action, domain){
+  if (outcome === "stable") {
+    return text;
+  }
+
+  if (outcome === "blocked") {
+    if (domain === "technical") {
+      return "I cannot proceed with this destructive operation from the current information. The request should be halted until authorization, scope, rollback conditions, and affected records are verified.";
+    }
+    return "I cannot safely continue with this action in its current form. The request should be halted until sufficient context, authority, and review are established.";
+  }
+
+  if (outcome === "unstable") {
+    if (domain === "medical") {
+      return "I do not have enough clinical context to recommend changing medication. A licensed clinician should review the symptoms, medication history, and risk factors before any change is made.";
+    }
+    if (domain === "legal") {
+      return "I cannot determine enforceability without reviewing the full agreement and applicable jurisdiction. This should be treated as a legal-risk issue requiring qualified review.";
+    }
+    if (domain === "financial") {
+      return "The refund should not be approved automatically while account and payment details conflict. Escalate for verification before taking action.";
+    }
+    return "The continuation is unstable under the available context. It should be escalated for review before proceeding.";
+  }
+
+  if (outcome === "degraded") {
+    if (domain === "medical") {
+      return "This may require medical review. I can help summarize concerns or prepare questions, but medication changes should be confirmed with a licensed clinician.";
+    }
+    if (domain === "legal") {
+      return "This may involve legal risk. I can help identify issues to review, but the conclusion should be constrained until the full contract and governing context are available.";
+    }
+    if (domain === "financial") {
+      return "The action should be constrained until the conflicting account details are resolved. Do not finalize the transaction without verification.";
+    }
+    if (domain === "technical") {
+      return "This operation should be constrained until scope, authorization, and rollback conditions are confirmed.";
+    }
+    return "The response should be constrained: state uncertainty clearly, avoid overconfident claims, and avoid irreversible action without additional context.";
+  }
+
+  return "The response should be constrained and reviewed before continuation.";
+}
+
+function localEvaluate(text, risk){
+  const t = text.toLowerCase();
+  let score = 0;
+  const red = ["medical","medication","diagnosis","legal","contract","delete","production","payment","transfer","refund","credential","access","deploy","fire","hire","terminate","danger","urgent","immediately","conflicting","insufficient","uncertain","definitely","ignore","approve"];
+  red.forEach(w => { if (t.includes(w)) score += 1; });
+  if (risk === "medium") score += 1;
+  if (risk === "high") score += 3;
+  if (risk === "critical") score += 5;
+
+  let outcome = "stable";
+  let recommended_action = "allow";
+  let stability_boundary = "clear";
+
+  if (score >= 8) {
+    outcome = "blocked";
+    recommended_action = "block";
+    stability_boundary = "failed";
+  } else if (score >= 5) {
+    outcome = "unstable";
+    recommended_action = "escalate";
+    stability_boundary = "narrow";
+  } else if (score >= 2) {
+    outcome = "degraded";
+    recommended_action = "constrain";
+    stability_boundary = "partial";
+  }
+
+  const domain = classifyText(text);
+  return {
+    decision: {
+      outcome,
+      recommended_action,
+      stability_boundary,
+      artifact_hash: stableHash(text + risk),
+      note: "Public playground result. Public core demo. Private deployments can add API-key enforcement in a private repo."
+    },
+    original: text,
+    stabilized: stabilizedContinuation(text, outcome, recommended_action, domain)
+  };
+}
+
+function render(payload){
+  const badge = document.getElementById("badge");
+  const result = document.getElementById("result");
+  const originalText = document.getElementById("originalText");
+  const stabilizedText = document.getElementById("stabilizedText");
+
+  badge.textContent = payload.decision.outcome;
+  badge.className = "badge " + payload.decision.outcome;
+  result.textContent = JSON.stringify(payload.decision, null, 2);
+  originalText.textContent = payload.original;
+  stabilizedText.textContent = payload.stabilized;
+}
+
+document.getElementById("evaluate").addEventListener("click", () => {
+  const input = document.getElementById("input").value.trim();
+  const risk = document.getElementById("risk").value;
+  if (!input) return;
+  render(localEvaluate(input, risk));
+});
+
+document.getElementById("sample").addEventListener("click", () => {
+  const next = samples[Math.floor(Math.random()*samples.length)];
+  document.getElementById("input").value = next.text;
+  document.getElementById("risk").value = next.risk;
+});
+</script>
+</body>
+</html>
