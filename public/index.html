@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Harmonic by Solace</title>
+<link rel="stylesheet" href="/styles.css" />
+<style>
+:root{--bg:#05070b;--panel:#0b1220;--line:#1f2937;--text:#f8fafc;--muted:#a7b0c0;--blue:#60a5fa;--gold:#f5b80a;--green:#86efac;--yellow:#fde68a}
+*{box-sizing:border-box}
+body{font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 72% 0%,#111827 0%,#05070b 38%,#03050a 100%);color:var(--text);margin:0}
+.shell{max-width:1200px;margin:0 auto;padding:32px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:76px}
+.brand{display:flex;gap:12px;align-items:center;font-weight:850;color:#fff;text-decoration:none}
+.mark{width:36px;height:36px;border-radius:12px;background:#111827;border:1px solid #9a7608;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900}
+.nav{display:flex;gap:14px;flex-wrap:wrap}
+.nav a{color:#e5e7eb;text-decoration:none;font-weight:800;border:1px solid #202b3d;border-radius:999px;padding:12px 18px;background:rgba(255,255,255,.03)}
+.nav a:hover{background:#111827}
+.hero{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
+.eyebrow{color:var(--blue);font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+h1{font-size:62px;line-height:.98;margin:14px 0 18px;letter-spacing:-.055em}
+.lede{font-size:20px;color:#dbeafe;line-height:1.58;margin:0;max-width:640px}
+.plain{font-size:18px;color:#cbd5e1;line-height:1.55;margin-top:18px;max-width:650px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.button{display:inline-flex;align-items:center;justify-content:center;border-radius:16px;padding:15px 20px;text-decoration:none;font-weight:900;background:var(--gold);color:#05070b}
+.button.secondary{background:#111827;color:#fff;border:1px solid #2b3648}
+.compat{margin-top:24px;color:#aeb8c8}
+.flow{background:linear-gradient(180deg,#0b1220,#070b14);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 28px 90px rgba(0,0,0,.34)}
+.flow h2{margin:0 0 18px;font-size:24px}
+.flow-step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px 0;border-top:1px solid #1f2937}
+.flow-step:first-of-type{border-top:0}
+.num{width:34px;height:34px;border-radius:11px;background:#111827;border:1px solid #2b3648;color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:900}
+.flow-step strong{display:block;font-size:17px;margin-bottom:4px}
+.flow-step span{color:#aeb8c8;line-height:1.45}
+.output{margin-top:18px;background:#030712;border:1px solid #1f2937;border-radius:18px;padding:16px;color:#bfdbfe;white-space:pre-wrap;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:84px}
+.card{background:#0b1220;border:1px solid var(--line);border-radius:24px;padding:24px}
+.card strong{color:var(--blue)}
+.card h3{font-size:22px;margin:10px 0}
+.card p{color:#b8c3d6;line-height:1.55}
+.explain{margin-top:64px;background:#080d17;border:1px solid #1f2937;border-radius:28px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.explain h2{font-size:34px;margin:0 0 12px;letter-spacing:-.03em}
+.explain p,.explain li{color:#cbd5e1;line-height:1.6}
+@media(max-width:950px){.hero,.grid,.explain{grid-template-columns:1fr}.topbar{align-items:flex-start;gap:18px;flex-direction:column}h1{font-size:44px}.shell{padding:24px}}
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<meta name="theme-color" content="#05070b" />
+</head>
+<body>
+<main class="shell">
+<header class="topbar">
+<a class="brand" href="/"><span class="mark">H</span><span>Harmonic by Solace</span></a>
+<nav class="nav">
+<a href="/docs.html">Docs</a>
+
+<a href="/playground.html">Playground</a>
+
+<a href="/pricing.html">Get API Key</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<p class="eyebrow">Universal AI stabilization</p>
+<h1>Add one layer between AI output and action.</h1>
+<p class="lede">
+Harmonic evaluates AI outputs before they reach users, tools, workflows, or agents.
+</p>
+<p class="plain">
+It helps your system decide whether to allow, constrain, escalate, or block a continuation before unstable behavior reaches the real world.
+</p>
+<div class="actions">
+<a class="button" href="/pricing.html">Start Building</a>
+<a class="button secondary" href="/playground.html">Try Playground</a>
+</div>
+<div class="compat">Works with OpenAI · Claude · Gemini · LangChain · CrewAI · Custom agents · Any LLM stack</div>
+</div>
+
+<aside class="flow">
+<h2>Where Harmonic plugs in</h2>
+<div class="flow-step"><div class="num">1</div><div><strong>Your LLM or agent responds</strong><span>The model drafts an answer, plan, tool call, or workflow continuation.</span></div></div>
+<div class="flow-step"><div class="num">2</div><div><strong>Harmonic evaluates the continuation</strong><span>A lightweight stabilization pass runs before the output is shown or executed.</span></div></div>
+<div class="flow-step"><div class="num">3</div><div><strong>Your system follows the decision</strong><span>Allow safe outputs. Constrain degraded ones. Escalate or block unstable continuations.</span></div></div>
+<div class="output">{
+  "outcome": "degraded",
+  "recommended_action": "constrain",
+  "stability_boundary": "partial",
+  "artifact_hash": "hs_7f4c..."
+}</div>
+</aside>
+</section>
+
+<section class="grid">
+<article class="card">
+<strong>01 / Always on</strong>
+<h3>Stabilize every meaningful output</h3>
+<p>Run Harmonic on model responses, agent plans, tool calls, and workflow steps before they continue.</p>
+</article>
+<article class="card">
+<strong>02 / Simple decision</strong>
+<h3>Allow, constrain, escalate, block</h3>
+<p>Keep integration clean with a bounded operational response your application can enforce immediately.</p>
+</article>
+<article class="card">
+<strong>03 / Upgrade path</strong>
+<h3>Grow into deeper governance</h3>
+<p>For higher-risk systems, expand into Admissibility Core, Execution Gateway, and Veil Runtime.</p>
+</article>
+</section>
+
+<section class="explain">
+<div>
+<h2>What builders get</h2>
+<p>A developer-friendly middleware layer that sits after the model and before the user-visible or execution-bound result.</p>
+<ul>
+<li>Fast API integration</li>
+<li>Public playground</li>
+<li>Usage-based pricing</li>
+<li>Basic logs and artifact references</li>
+<li>No model replacement required</li>
+</ul>
+</div>
+<div>
+<h2>What it prevents</h2>
+<p>Harmonic is designed to reduce ordinary operational drift accumulation before it becomes customer-facing or action-bound.</p>
+<ul>
+<li>Overconfident risky continuation</li>
+<li>Contradiction normalization</li>
+<li>Unsafe agent action</li>
+<li>Missing escalation</li>
+<li>Consequence-insensitive response behavior</li>
+</ul>
+</div>
+</section>
+</main>
+</body>
+</html>

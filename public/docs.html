@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harmonic Public Core Docs</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main class="page">
+    <nav class="nav"><a href="/">Home</a><a href="/playground.html">Playground</a><a href="/docs.html">Docs</a></nav>
+    <section class="hero">
+      <p class="eyebrow">Public Core</p>
+      <h1>Evaluate operational stability before execution.</h1>
+      <p>This public release includes the core evaluator and demo boundary only. Billing, API-key provisioning, customer console, private replay, and telemetry surfaces are intentionally excluded.</p>
+    </section>
+    <section class="panel">
+      <h2>POST /api/evaluate</h2>
+      <pre><code>curl -X POST https://your-domain.example/api/evaluate \
+  -H "Content-Type: application/json" \
+  -d '{"packet_id":"demo-001","truth":{"claims":["state is verified"],"observations":["state is verified"]},"accountability":{"responsible_actor":"operator","authority_basis":"demo"}}'</code></pre>
+    </section>
+    <section class="panel">
+      <h2>Response boundary</h2>
+      <p>The evaluator returns an operational decision such as allow, constrain, escalate, or block, plus a deterministic artifact hash. It does not expose private customer data, billing state, or deployment secrets.</p>
+    </section>
+  </main>
+</body>
+</html>
