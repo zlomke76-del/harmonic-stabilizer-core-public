@@ -1,56 +1,101 @@
-# Harmonic Stabilizer Core — Public Release
+Harmonic Stabilizer Core
 
-A public-safe repository for the Harmonic Stabilizer core evaluator.
+Deterministic execution governance for consequence-bearing AI systems.
 
-This repo is designed for public GitHub visibility without exposing private operational infrastructure. It includes the public evaluator, static demo pages, SDK examples, and test vectors. It intentionally excludes customer billing, API-key provisioning, Supabase service-role access, Stripe webhook handling, private telemetry, and customer console flows.
+Harmonic Stabilizer evaluates whether an AI or autonomous system output should:
 
-## What is included
+proceed,
+be constrained,
+require escalation,
+or be blocked
 
-- Static product/demo pages
-- `POST /api/evaluate` public core evaluator
-- `GET /api/health` public release health check
-- SDK examples
-- Test vectors
-- Public docs
+under live operational conditions.
 
-## What is not included
+The system is designed to sit between probabilistic cognition and real-world execution.
 
-- Supabase service-role routes
-- Stripe checkout/webhook routes
-- API-key creation/revocation routes
-- Customer console routes
-- Private evaluation replay storage
-- Private schema names, credentials, secrets, or customer data
+LLM / Agent / Workflow
+          ↓
+Harmonic Stabilizer
+          ↓
+allow / constrain / escalate / block
+Why it exists
 
-## Local check
+Modern AI systems increasingly operate inside environments where:
 
-```bash
+authority changes,
+runtime conditions drift,
+assumptions degrade,
+orchestration chains mutate,
+and consequence-bearing execution continues under evolving state.
+
+Harmonic Stabilizer provides a deterministic governance boundary that evaluates execution admissibility before irreversible consequence formation occurs.
+
+This repository contains the public evaluation core, demo surfaces, SDK examples, and reference integration patterns.
+
+Features
+Deterministic governance evaluation
+Runtime admissibility scoring
+Constraint-aware execution decisions
+Public evaluation API
+SDK integration examples
+Static demo interface
+Test vectors and validation flows
+Vercel-ready deployment
+Public API
+Evaluate
+POST /api/evaluate
+
+Returns:
+
+{
+  "decision": "allow",
+  "confidence": 0.98,
+  "constraints": [],
+  "reasoning_trace": []
+}
+Health
+GET /api/health
+Example Flow
+User Request
+    ↓
+LLM Response
+    ↓
+Harmonic Stabilizer Evaluation
+    ↓
+Governed Execution Decision
+Quick Start
+npm install
+npm run dev
+
+Run validation:
+
 npm run check
 npm run test:vectors
-```
+Deployment
 
-## Public boundary
+Deploy directly to Vercel
 
-This public release demonstrates the operational boundary:
-
-```text
-LLM/system output → Harmonic evaluator → allow / constrain / escalate / block
-```
-
-It does not publish private deployment mechanics, customer provisioning logic, billing logic, or internal telemetry architecture.
-
-## Environment
-
-No secrets are required for this public version. See `.env.example`.
-
-## Deployment
-
-Deploy as a simple Vercel static + serverless project.
-
-```bash
 vercel deploy
-```
+Architecture Boundary
 
-## Private deployment note
+This public repository intentionally contains only the public evaluation layer and integration surface.
 
-Keep billing, customer console, API-key provisioning, authenticated replay, and private telemetry in a separate private repository or private branch.
+Operational infrastructure such as:
+
+customer provisioning,
+billing,
+authenticated replay systems,
+private telemetry,
+and internal orchestration infrastructure
+
+remain outside the public release boundary.
+
+Intended Use Cases
+AI governance layers
+Agent execution control
+Autonomous workflow gating
+Runtime admissibility enforcement
+Safety and escalation systems
+Human-in-the-loop execution boundaries
+Enterprise orchestration governance
+License
