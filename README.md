@@ -2,6 +2,8 @@
 
 Deterministic execution governance for consequence-bearing AI systems.
 
+Built for execution-bound AI systems operating under evolving runtime conditions.
+
 Harmonic Stabilizer evaluates whether an AI or autonomous system output should:
 
 - proceed,
