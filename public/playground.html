@@ -1,213 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Playground | Harmonic by Solace</title>
-<link rel="stylesheet" href="/styles.css" />
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reference Playground | Harmonic</title><link rel="stylesheet" href="/styles.css" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <style>
-:root{
-  --bg:#05070b;
-  --panel:#0b1220;
-  --panel2:#070b14;
-  --line:#1f2937;
-  --text:#f8fafc;
-  --muted:#a7b0c0;
-  --blue:#60a5fa;
-  --green:#86efac;
-  --yellow:#fde68a;
-  --red:#fca5a5;
-}
-*{box-sizing:border-box}
-body{font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 70% 0%,#111827 0%,#05070b 38%,#03050a 100%);color:var(--text);margin:0}
-.shell{max-width:1180px;margin:0 auto;padding:32px}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:46px}
-.brand{display:flex;gap:12px;align-items:center;font-weight:800;color:var(--text);text-decoration:none}
-.mark{width:36px;height:36px;border-radius:12px;background:#111827;border:1px solid #263244;display:flex;align-items:center;justify-content:center;color:var(--blue)}
-.nav a{color:#d1d5db;margin-left:20px;text-decoration:none;font-weight:650}
-.nav a:hover{color:#fff}
-.hero{max-width:860px;margin-bottom:28px}
-.eyebrow{color:var(--blue);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
-h1{font-size:48px;line-height:1.04;margin:12px 0 16px}
-.lede{font-size:19px;color:#cbd5e1;line-height:1.58;margin:0}
-.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start}
-.panel{background:linear-gradient(180deg,#0b1220,#070b14);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 24px 80px rgba(0,0,0,.28)}
-label{display:block;font-weight:750;margin:0 0 10px}
-textarea{width:100%;min-height:235px;background:#030712;color:#fff;border:1px solid #2b3648;border-radius:18px;padding:16px;font-size:15px;line-height:1.5;resize:vertical;outline:none}
-textarea:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(96,165,250,.12)}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
-select,input{background:#030712;color:#fff;border:1px solid #2b3648;border-radius:14px;padding:12px 14px}
-button,.button{border:0;border-radius:15px;background:#f8fafc;color:#020617;font-weight:850;padding:13px 17px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
-.button.secondary,button.secondary{background:#111827;color:#fff;border:1px solid #2b3648}
-button:disabled{opacity:.55;cursor:not-allowed}
-.result-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}
-.badge{border-radius:999px;padding:7px 11px;font-size:12px;font-weight:850;border:1px solid #2b3648;color:#dbeafe;background:#0b1220}
-.badge.stable{color:var(--green)}
-.badge.degraded{color:var(--yellow)}
-.badge.unstable,.badge.blocked{color:var(--red)}
-pre{white-space:pre-wrap;background:#030712;border:1px solid #1f2937;border-radius:18px;padding:16px;color:#bfdbfe;min-height:190px;overflow:auto}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
-.card{background:#0b1220;border:1px solid var(--line);border-radius:20px;padding:18px}
-.card strong{color:var(--blue);font-size:13px}
-.card p{color:#aeb8c8;line-height:1.5}
-.notice{color:#9ca3af;font-size:13px;line-height:1.5;margin-top:14px}
-@media(max-width:900px){.layout,.steps{grid-template-columns:1fr}.topbar{align-items:flex-start;gap:18px;flex-direction:column}.nav a{margin-left:0;margin-right:16px}h1{font-size:38px}}
+body{font-family:Inter,Arial,sans-serif;background:#05070b;color:#f8fafc;margin:0}.shell{max-width:1050px;margin:0 auto;padding:32px}.nav{display:flex;gap:18px;margin-bottom:46px}.nav a{color:#dbeafe;text-decoration:none;font-weight:700}.hero,.panel{background:#0b1220;border:1px solid #1f2937;border-radius:24px;padding:26px;margin-bottom:22px}.eyebrow{color:#60a5fa;font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:12px}h1{font-size:46px;letter-spacing:-.04em;margin:10px 0 16px}p{color:#cbd5e1;line-height:1.65}.warning{border-left:4px solid #f5b80a;padding-left:16px}textarea{width:100%;min-height:220px;background:#030712;color:#f8fafc;border:1px solid #2b3648;border-radius:16px;padding:16px;font:14px/1.5 ui-monospace,monospace;box-sizing:border-box}button{margin-top:14px;border:0;border-radius:14px;padding:13px 17px;font-weight:850;cursor:pointer}pre{white-space:pre-wrap;background:#030712;border:1px solid #1f2937;border-radius:16px;padding:16px;color:#bfdbfe;overflow:auto}
 </style>
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/favicon.png" />
-<meta name="theme-color" content="#05070b" />
 </head>
-<body>
-<main class="shell">
-<header class="topbar">
-<a class="brand" href="/"><span class="mark">H</span><span>Harmonic by Solace</span></a>
-<nav class="nav">
-<a href="/">Home</a>
-<a href="/docs.html">Docs</a>
-
-<a href="/access.html">Get API Key</a>
-</nav>
-</header>
-
-<section class="hero">
-<p class="eyebrow">Harmonic Playground</p>
-<h1>Test stabilization before you integrate.</h1>
-<p class="lede">
-Paste a model output, agent action, or workflow continuation. Harmonic returns a bounded operational decision without exposing internal stabilization mechanics.
-</p>
-</section>
-
-<section class="layout">
-<div class="panel">
-<label for="input">Model output or proposed continuation</label>
-<textarea id="input">The assistant recommends that a user stop taking medication immediately, despite limited context and no clinician review.</textarea>
-
-<div class="row">
-<select id="risk">
-<option value="low">Low consequence</option>
-<option value="medium" selected>Medium consequence</option>
-<option value="high">High consequence</option>
-<option value="critical">Critical consequence</option>
-</select>
-<button id="evaluate">Evaluate Stability</button>
-<button class="secondary" id="sample">Load Sample</button>
-</div>
-
-<p class="notice">
-For public playground use, results are intentionally minimal: outcome, recommended action, stability boundary, and artifact reference.
-</p>
-</div>
-
-<div class="panel">
-<div class="result-head">
-<div>
-<div class="eyebrow">Result</div>
-<h2 style="margin:6px 0 0">Operational decision</h2>
-</div>
-<span id="badge" class="badge">ready</span>
-</div>
-<pre id="result">{
-  "status": "ready",
-  "message": "Paste a continuation and evaluate stability."
-}</pre>
-
-<div class="row">
-<a class="button" href="/access.html">Get API Key</a>
-<a class="button secondary" href="/docs.html">View Docs</a>
-</div>
-</div>
-</section>
-
-<section class="steps">
-<article class="card">
-<strong>01 / Paste</strong>
-<h3>Bring any output</h3>
-<p>Use a model response, agent plan, tool call, workflow step, or proposed customer-facing answer.</p>
-</article>
-<article class="card">
-<strong>02 / Evaluate</strong>
-<h3>Get a bounded decision</h3>
-<p>Receive allow, constrain, escalate, or block guidance with an opaque artifact reference.</p>
-</article>
-<article class="card">
-<strong>03 / Integrate</strong>
-<h3>Add one runtime layer</h3>
-<p>Place Harmonic between model output and user-visible or execution-bound continuation.</p>
-</article>
-</section>
-</main>
-
+<body><main class="shell"><nav class="nav"><a href="/">Home</a><a href="/docs.html">V4 Docs</a><a href="/playground.html">Reference Playground</a></nav>
+<section class="hero"><p class="eyebrow">Public-safe reference demonstrator</p><h1>Test the public wiring, not the private runtime.</h1><p>This page calls the simplified evaluator included in this public repository. It is useful for request/response integration experiments. It is <strong>not</strong> the sovereign production Harmonic v4 runtime and its output is not production Harmonic evidence.</p><p class="warning">Do not use this playground to infer private primitive logic or to reproduce frozen production evidence. Published evidence under <code>evidence/</code> was generated against the separately controlled production runtime.</p></section>
+<section class="panel"><label for="packet"><strong>Reference packet JSON</strong></label><textarea id="packet">{
+  "packet_id": "public-reference-001",
+  "truth": {
+    "claims": ["state is verified"],
+    "observations": ["state is verified"]
+  },
+  "accountability": {
+    "responsible_actor": "operator",
+    "authority_basis": "public-reference"
+  }
+}</textarea><button id="run">Run public reference evaluator</button></section>
+<section class="panel"><p class="eyebrow">Reference result</p><pre id="result">Ready.</pre></section>
 <script>
-const samples = [
-  "The assistant recommends that a user stop taking medication immediately, despite limited context and no clinician review.",
-  "The agent wants to send a refund approval email after detecting conflicting account details.",
-  "The model gives a confident legal recommendation while admitting it has not reviewed the governing contract.",
-  "The assistant answers a general historical question with no operational consequence.",
-  "The workflow proposes deleting production records after an ambiguous user request."
-];
-
-function stableHash(input){
-  let h = 2166136261;
-  for (let i=0;i<input.length;i++){
-    h ^= input.charCodeAt(i);
-    h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
+document.getElementById('run').addEventListener('click', async () => {
+  const out = document.getElementById('result');
+  try {
+    const packet = JSON.parse(document.getElementById('packet').value);
+    out.textContent = 'Evaluating public reference endpoint…';
+    const res = await fetch('/api/evaluate', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(packet)});
+    const body = await res.json();
+    out.textContent = JSON.stringify({public_reference_only:true, http_status:res.status, result:body}, null, 2);
+  } catch (error) {
+    out.textContent = JSON.stringify({error:String(error)}, null, 2);
   }
-  return "hs_" + (h >>> 0).toString(16).padStart(8,"0");
-}
-
-function localEvaluate(text, risk){
-  const t = text.toLowerCase();
-  let score = 0;
-  const red = ["medical","medication","diagnosis","legal","contract","delete","production","payment","transfer","refund","credential","access","deploy","fire","hire","terminate","danger","urgent","immediately","conflicting","insufficient","uncertain"];
-  red.forEach(w => { if (t.includes(w)) score += 1; });
-  if (risk === "medium") score += 1;
-  if (risk === "high") score += 3;
-  if (risk === "critical") score += 5;
-
-  let outcome = "stable";
-  let recommended_action = "allow";
-  let stability_boundary = "clear";
-
-  if (score >= 8) {
-    outcome = "blocked";
-    recommended_action = "block";
-    stability_boundary = "failed";
-  } else if (score >= 5) {
-    outcome = "unstable";
-    recommended_action = "escalate";
-    stability_boundary = "narrow";
-  } else if (score >= 2) {
-    outcome = "degraded";
-    recommended_action = "constrain";
-    stability_boundary = "partial";
-  }
-
-  return {
-    outcome,
-    recommended_action,
-    stability_boundary,
-    artifact_hash: stableHash(text + risk),
-    note: "Public playground result. Public core demo. Private deployments can add API-key enforcement in a private repo."
-  };
-}
-
-document.getElementById("evaluate").addEventListener("click", async () => {
-  const input = document.getElementById("input").value.trim();
-  const risk = document.getElementById("risk").value;
-  const result = document.getElementById("result");
-  const badge = document.getElementById("badge");
-  if (!input) return;
-  const decision = localEvaluate(input, risk);
-  badge.textContent = decision.outcome;
-  badge.className = "badge " + decision.outcome;
-  result.textContent = JSON.stringify(decision, null, 2);
 });
-
-document.getElementById("sample").addEventListener("click", () => {
-  const next = samples[Math.floor(Math.random()*samples.length)];
-  document.getElementById("input").value = next;
-});
-</script>
-</body>
-</html>
+</script></main></body></html>
