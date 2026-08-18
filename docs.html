@@ -1,30 +1,71 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harmonic Public Core Docs</title>
-  <link rel="stylesheet" href="/styles.css" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Harmonic v4 Public Contract</title>
+<link rel="stylesheet" href="/styles.css" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<style>
+body{background:#05070b;color:#f8fafc;font-family:Inter,Arial,sans-serif;margin:0}.page{max-width:1040px;margin:0 auto;padding:32px}.nav{display:flex;gap:18px;margin-bottom:48px}.nav a{color:#dbeafe;text-decoration:none;font-weight:700}.hero,.panel{background:#0b1220;border:1px solid #1f2937;border-radius:24px;padding:28px;margin-bottom:22px}.eyebrow{color:#60a5fa;font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:12px}h1{font-size:46px;letter-spacing:-.04em;margin:10px 0 16px}h2{margin-top:0}p,li{color:#cbd5e1;line-height:1.65}pre{background:#030712;border:1px solid #1f2937;border-radius:18px;padding:18px;overflow:auto;color:#bfdbfe}.callout{border-left:4px solid #f5b80a;padding-left:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:36px}}
+</style>
 </head>
 <body>
-  <main class="page">
-    <nav class="nav"><a href="/">Home</a><a href="/playground.html">Playground</a><a href="/docs.html">Docs</a></nav>
-    <section class="hero">
-      <p class="eyebrow">Public Core</p>
-      <h1>Evaluate operational stability before execution.</h1>
-      <p>This public release includes the core evaluator and demo boundary only. Billing, API-key provisioning, customer console, private replay, and telemetry surfaces are intentionally excluded.</p>
-    </section>
-    <section class="panel">
-      <h2>POST /api/evaluate</h2>
-      <pre><code>curl -X POST https://your-domain.example/api/evaluate \
-  -H "Content-Type: application/json" \
-  -d '{"packet_id":"demo-001","truth":{"claims":["state is verified"],"observations":["state is verified"]},"accountability":{"responsible_actor":"operator","authority_basis":"demo"}}'</code></pre>
-    </section>
-    <section class="panel">
-      <h2>Response boundary</h2>
-      <p>The evaluator returns an operational decision such as allow, constrain, escalate, or block, plus a deterministic artifact hash. It does not expose private customer data, billing state, or deployment secrets.</p>
-    </section>
-  </main>
+<main class="page">
+<nav class="nav"><a href="/">Home</a><a href="/playground.html">Reference Playground</a><a href="/docs.html">Docs</a></nav>
+<section class="hero">
+<p class="eyebrow">Harmonic v4 public architecture contract</p>
+<h1>Govern continuation before consequence.</h1>
+<p>The production Harmonic boundary evaluates whether the conditions supporting a proposed continuation remain admissible at the moment consequence is about to bind.</p>
+<p class="callout"><strong>Repository boundary:</strong> the evaluator source included in this public repository is a simplified public-safe demonstrator. It is not the sovereign production Harmonic v4 runtime.</p>
+</section>
+<section class="grid">
+<div class="panel"><h2>Production contract identity</h2><pre><code>runtime_version: 4.0.0
+api_version: v4-single-call
+POST /api/evaluate</code></pre></div>
+<div class="panel"><h2>Constitutional determinations</h2><pre><code>PERMITTED
+CONSTRAINED
+ESCALATED
+REFUSED
+EMERGENCY_CONTINUITY</code></pre><p>Execution-facing directives are separate objects and may use allow/constrain/escalate/refuse semantics.</p></div>
+</section>
+<section class="panel">
+<h2>Execution boundary</h2>
+<p>A determination does not claim that Harmonic performed the downstream act. The v4 public contract separates response binding from downstream execution enforcement.</p>
+<pre><code>{
+  "runtime_version": "4.0.0",
+  "outcome": "ESCALATED",
+  "admissible": false,
+  "action": "escalate",
+  "response_binding": {
+    "response_binding_enforced": true,
+    "binding_scope": "governed_response_contract_only",
+    "downstream_execution_enforced": false
+  },
+  "constitutional_transaction": {
+    "api_version": "v4-single-call",
+    "execution": { "status": "NOT_EXECUTED_BY_HARMONIC" }
+  }
+}</code></pre>
+</section>
+<section class="panel">
+<h2>Present-state discipline</h2>
+<p>Upstream cognition or institutional systems establish attributable state. Harmonic evaluates continuation against the supplied state and preserves epistemic/reconstructability limits rather than silently manufacturing missing institutional knowledge.</p>
+</section>
+<section class="panel">
+<h2>Public frozen evidence</h2>
+<p>The Decision Engineering T4 v1.1 archive is preserved under <code>evidence/decision-engineering/t4-v1.1/</code>. It records both supportive and non-supportive findings. The final bounded reading is:</p>
+<ul>
+<li><strong>D1:</strong> representation-activation bundle effect supported; individual field causality not isolated.</li>
+<li><strong>D2:</strong> propagation dependency demonstrated at the signal/reason level; top-line marginal effect not isolated.</li>
+<li><strong>D3:</strong> provenance dependency not demonstrated; provenance-projection insensitivity observed.</li>
+</ul>
+<p>The archive is evidence only. It is not runtime configuration and was added after the v4.0.0 runtime freeze.</p>
+</section>
+<section class="panel">
+<h2>Reference/demo endpoint in this repository</h2>
+<p>The checked-in <code>api/evaluate.js</code> endpoint remains available for local public-safe experimentation and SDK wiring. Its simplified scoring logic is intentionally not represented as the private production primitive implementation. Results from that local demonstrator are not production Harmonic evidence.</p>
+</section>
+</main>
 </body>
 </html>

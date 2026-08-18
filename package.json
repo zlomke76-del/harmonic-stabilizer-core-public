@@ -1,11 +1,13 @@
 {
   "name": "harmonic-stabilizer-core",
-  "version": "1.1.0-public",
+  "version": "4.0.0-public.1",
   "private": false,
-  "description": "Public-safe Harmonic Stabilizer core demo. Private billing, API-key provisioning, and telemetry surfaces removed.",
+  "description": "Public Harmonic v4 architecture contract, public-safe reference evaluator, SDK examples, and frozen evidence archive. Sovereign production runtime implementation excluded.",
   "scripts": {
     "test:vectors": "node scripts/test-vectors.js",
-    "check": "node --check api/evaluate.js && node --check api/health.js && node --check api/contact.js"
+    "check": "node --check api/evaluate.js && node --check api/health.js && node --check api/contact.js && node --check scripts/verify-public-boundary.js",
+    "verify:evidence": "python3 evidence/decision-engineering/t4-v1.1/verify_evidence.py",
+    "verify:public-boundary": "node scripts/verify-public-boundary.js"
   },
   "dependencies": {}
 }

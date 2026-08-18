@@ -1,151 +1,158 @@
-# Harmonic Stabilizer Core
+# Harmonic Stabilizer Core — Public Reference Repository
 
-Deterministic execution governance for consequence-bearing AI systems.
+**Public architecture contract, integration reference, and frozen evidence archive for Harmonic v4.0.0.**
 
-Built for execution-bound AI systems operating under evolving runtime conditions.
+Harmonic is a constitutional continuation runtime for consequence-bearing AI and automated systems. Its production boundary asks a narrow question immediately before consequence:
 
-Harmonic Stabilizer evaluates whether an AI or autonomous system output should:
+> **Do the conditions that make this continuation admissible remain supportable now?**
 
-- proceed,
-- be constrained,
-- require escalation,
-- or be blocked
+Harmonic does not replace upstream cognition and does not infer domain truth merely from prose. It evaluates supplied, attributable runtime state across constitutional conditions such as present-state support, authority continuity, obligations, consequence boundaries, and continuation requirements.
 
-under live operational conditions.
+## Important public-repository boundary
 
-The system is designed to operate between probabilistic cognition and real-world execution.
+This repository **does not contain the sovereign production Harmonic runtime**.
+
+The JavaScript evaluator under `api/evaluate.js` is a **public-safe reference/demo evaluator retained for integration examples and local experimentation**. It is not the production v4.0.0 constitutional runtime, and its internal scoring model must not be treated as a description of the private production implementation.
+
+The production runtime remains internally controlled. Public consumers should distinguish:
+
+- **architecture contract** — documented here;
+- **reference/demo evaluator** — included here for public experimentation;
+- **production Harmonic runtime** — sovereign implementation, not published here;
+- **frozen evidence** — preserved here where publication is appropriate.
+
+See [`V4_PUBLIC_BOUNDARY.md`](./V4_PUBLIC_BOUNDARY.md).
 
 ---
 
-## Operational Boundary
+## Harmonic v4.0.0 public contract
+
+The production single-call contract is identified as:
+
+- Runtime: `4.0.0`
+- API contract: `v4-single-call`
+- Canonical evaluation boundary: `POST /api/evaluate`
+
+Conceptually:
 
 ```text
-LLM / Agent / Workflow
-          ↓
-Harmonic Stabilizer
-          ↓
-allow / constrain / escalate / block
-Why it Exists
+Upstream cognition / institutional state
+                  ↓
+          proposed continuation
+                  ↓
+              Harmonic
+                  ↓
+ constitutional determination
+                  ↓
+        execution directive
+                  ↓
+        downstream executor
+```
 
-Modern AI systems increasingly operate inside environments where:
+Harmonic's canonical constitutional determinations are:
 
-authority changes,
-runtime conditions drift,
-assumptions degrade,
-orchestration chains mutate,
-and consequence-bearing execution continues under evolving state.
+- `PERMITTED`
+- `CONSTRAINED`
+- `ESCALATED`
+- `REFUSED`
+- `EMERGENCY_CONTINUITY`
 
-Harmonic Stabilizer provides a deterministic governance boundary that evaluates execution admissibility before irreversible consequence formation occurs.
+Operational directives such as `allow`, `constrain`, `escalate`, and `block/refuse` are **execution-facing instructions**, not substitutes for the constitutional determination vocabulary.
 
-This repository contains the public evaluation core, demo surfaces, SDK examples, and reference integration patterns.
+## Execution boundary
 
-Features
-Deterministic governance evaluation
-Runtime admissibility scoring
-Constraint-aware execution decisions
-Public evaluation API
-SDK integration examples
-Static demo interface
-Test vectors and validation flows
-Vercel-ready deployment
-Public API
-Evaluate
-POST /api/evaluate
+Harmonic separates determination from downstream execution.
 
-Example response:
+A governed response may bind the response contract while still recording that Harmonic itself did not perform the downstream act. In v4 this distinction is explicit:
 
+```json
 {
-  "decision": "allow",
-  "confidence": 0.98,
-  "constraints": [],
-  "reasoning_trace": []
+  "response_binding_enforced": true,
+  "binding_scope": "governed_response_contract_only",
+  "downstream_execution_enforced": false
 }
-Health
-GET /api/health
-Example Flow
-User Request
-    ↓
-LLM Response
-    ↓
-Harmonic Stabilizer Evaluation
-    ↓
-Governed Execution Decision
-Quick Start
+```
 
-Install dependencies:
+A constitutional transaction can therefore state `NOT_EXECUTED_BY_HARMONIC` while still determining whether execution may continue.
 
-npm install
+## Present state and epistemic discipline
 
-Run locally:
+V4 preserves the distinction between:
 
-npm run dev
+- state supplied to the runtime;
+- attributable provenance for that state;
+- whether the state is sufficiently reconstructable;
+- the constitutional determination made against the supplied state.
 
-Run validation:
+Missing provenance or institutional knowledge is not silently manufactured. Upstream cognition and institutional authority remain sovereign.
 
+---
+
+## Frozen public evidence: Decision Engineering T4 v1.1
+
+The repository includes an evidence-only archive at:
+
+[`evidence/decision-engineering/t4-v1.1/`](./evidence/decision-engineering/t4-v1.1/)
+
+The archive records a prospectively frozen four-condition examination against Harmonic v4.0.0. It was added **after** the runtime freeze and does not modify runtime behavior.
+
+Final bounded reading preserved in the evidence record:
+
+- **D1 — supported as a representation-activation bundle effect; individual field causality not isolated.**
+- **D2 — propagation dependency demonstrated at the signal/reason level; top-line marginal effect not isolated.**
+- **D3 — provenance dependency not demonstrated; provenance-projection insensitivity observed.**
+
+The broad mechanism-absence interpretation was withdrawn.
+
+The surviving research question is preserved without a novelty claim:
+
+> **What ensures that a legitimately established institutional authority change is correctly and timely bound into the runtime state consumed by an already-existing authority-coherence mechanism?**
+
+Comparator / established-owner absorption testing remains the appropriate next step before naming a seam or extending the architecture.
+
+---
+
+## Public reference evaluator
+
+For local/public-safe experimentation, this repository still exposes a simplified demonstrator at `api/evaluate.js` and the static playground.
+
+That demonstrator is useful for:
+
+- SDK wiring;
+- request/response mechanics;
+- public examples;
+- local deployment exercises;
+- simple bounded-decision demonstrations.
+
+It is **not evidence of production Harmonic behavior** and should not be used to infer private primitive logic or the v4 production implementation.
+
+Run local checks:
+
+```bash
 npm run check
 npm run test:vectors
-Environment
+npm run verify:evidence
+npm run verify:public-boundary
+```
 
-This public release intentionally avoids requiring private infrastructure credentials.
+## Repository structure
 
-See .env.example.
+```text
+api/                                public-safe reference/demo evaluator
+sdk/                                public integration examples
+scripts/                            validation utilities
+public/                             static public deployment assets
+evidence/decision-engineering/      frozen public evidence archives
+docs.html                           public contract documentation
+V4_PUBLIC_BOUNDARY.md               architecture/repository boundary
+```
 
-Deployment
+## Security and private surfaces
 
-Deploy directly to Vercel
+This public release intentionally excludes operational infrastructure including customer provisioning, billing, private API-key administration, private telemetry, authenticated evidence stores, and sovereign production-runtime implementation details.
 
-vercel deploy
-Architecture Boundary
-
-This public repository intentionally contains only the public evaluation layer and integration surface.
-
-Operational infrastructure such as:
-
-customer provisioning,
-billing systems,
-authenticated replay systems,
-private telemetry,
-orchestration infrastructure,
-internal governance pipelines,
-and enterprise deployment infrastructure
-
-remain outside the public release boundary.
-
-Intended Use Cases
-AI governance layers
-Agent execution control
-Autonomous workflow gating
-Runtime admissibility enforcement
-Safety and escalation systems
-Human-in-the-loop execution boundaries
-Enterprise orchestration governance
-Repository Structure
-/api
-/public
-/sdk
-/test-vectors
-/docs
-Security
-
-If you discover a vulnerability or security issue, please report it privately.
-
-See SECURITY.md.
-
-Contributing
-
-Public contributions are welcome for:
-
-SDK examples
-documentation
-test vectors
-integration examples
-
-Core governance architecture decisions remain internally maintained.
-
-See CONTRIBUTING.md.
+Do not place production credentials in this repository.
 
 ## License
 
-Licensed under the Apache License, Version 2.0.
-
-See the LICENSE file for details.
+Licensed under the Apache License, Version 2.0. See [`LICENSE`](./LICENSE).
