@@ -1,14 +1,29 @@
-# Harmonic Stabilizer Core — Public Reference Repository
+# Harmonic — The Governance API for Developers
 
-**Public architecture contract, integration reference, and frozen evidence archive for Harmonic v4.0.0.**
+**Your AI can act. Harmonic determines whether it should.**
 
-Harmonic is a constitutional continuation runtime for consequence-bearing AI and automated systems. Its production boundary asks a narrow question immediately before consequence:
+### One API call before execution.
+
+```text
+POST /api/evaluate
+```
+
+Harmonic is runtime governance infrastructure for consequence-bearing AI and automated systems. Immediately before consequence, it evaluates whether the conditions supporting continuation remain admissible now.
+
+**Start here:** [`QUICKSTART.md`](./QUICKSTART.md) · [`Node example`](./examples/node-evaluate.js) · [`Python example`](./examples/python_evaluate.py) · [`Public boundary`](./V4_PUBLIC_BOUNDARY.md) · [`Frozen evidence`](./evidence/decision-engineering/t4-v1.1/)
+
+> **Public repository boundary**
+> This repository contains the public architecture contract, public-safe reference/demo evaluator, integration examples, and frozen evidence published for Harmonic v4.0.0. It **does not contain the sovereign production Harmonic runtime**.
+
+---
+
+## What Harmonic asks
 
 > **Do the conditions that make this continuation admissible remain supportable now?**
 
 Harmonic does not replace upstream cognition and does not infer domain truth merely from prose. It evaluates supplied, attributable runtime state across constitutional conditions such as present-state support, authority continuity, obligations, consequence boundaries, and continuation requirements.
 
-## Important public-repository boundary
+## Public-repository boundary
 
 This repository **does not contain the sovereign production Harmonic runtime**.
 
@@ -138,8 +153,10 @@ npm run verify:public-boundary
 ## Repository structure
 
 ```text
+QUICKSTART.md                       developer-first integration path
+examples/                           minimal Node and Python call examples
 api/                                public-safe reference/demo evaluator
-sdk/                                public integration examples
+sdk/                                public integration helpers
 scripts/                            validation utilities
 public/                             static public deployment assets
 evidence/decision-engineering/      frozen public evidence archives
