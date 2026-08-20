@@ -1,0 +1,583 @@
+TIM PROJECT — DE BOUNDARY
+
+T4 v1.1 — INDEPENDENT ADJUDICATION RECORD
+
+Version:
+0.1
+
+Date:
+18 August 2026
+
+Adjudicator:
+Wojciech Z. Kaleta, PhD — Decision Engineering
+
+Counter-architecture:
+Harmonic — Tim Zlomke
+
+Status:
+INDEPENDENT POST-EXECUTION ADJUDICATION DRAFT
+TIM'S INTERPRETATION NOT USED
+NO GAP / SEAM CONSTRUCT ADMITTED
+NO NOVELTY CLAIM
+
+Parent records:
+- PASS 4 Amendment 0.1A
+- T4 Pre-Execution Timebase Amendment 1.0B — Frozen
+- T4 Frozen Protocol v1.1
+- T4 v1.1 Frozen Packet Set
+
+======================================================================
+0. EVIDENCE INTEGRITY
+======================================================================
+
+The four native Engineering View outputs identify the prospectively frozen
+T4 v1.1 packet IDs:
+
+A:
+WOJCIECH-T4V11-A-REPRESENTATION-NOT-BOUND-001
+
+B:
+WOJCIECH-T4V11-B-A1-BOUND-PROPAGATION-CONFIRMED-001
+
+C:
+WOJCIECH-T4V11-C-A1-BOUND-PROPAGATION-UNCONFIRMED-001
+
+D:
+WOJCIECH-T4V11-D-RUNTIME-CURRENT-PROVENANCE-INCOMPLETE-001
+
+Frozen packet-file SHA-256 values previously preserved:
+
+A:
+2aa3e104d3d9eb8d8f750c45f23cb56853e363969b002f3c9cb8ff637f256857
+Frozen file bytes: 6343
+
+B:
+66e61cec8e413ecfbde59e44e367936c14fcbf22489c79b30e4dadee18356986
+Frozen file bytes: 6829
+
+C:
+7b6068a8a05c2ada70f5863ed7750d7c1ef04a9ae9dc2ffbae83b6ff1d615955
+Frozen file bytes: 6834
+
+D:
+9df59ada95d0120853eb185fa014cbe425d9e79b782cd0aa56f4b5c94757977d
+Frozen file bytes: 6827
+
+Engineering View outbound identities:
+
+A:
+7039576d38ef28cf2b4d62f24c20a1a73d814b7596d64cbf74ce540b7ed66567
+Outbound bytes: 6342
+
+B:
+dbf4b0fea8879211181d04e86fb1a67dbc30ddb6b94a66c9be1cd3adf509f134
+Outbound bytes: 6828
+
+C:
+99b0892f8f81b5804e1ce54449a1474cf46167258e814daf8de78d066e7714c8
+Outbound bytes: 6833
+
+D:
+fcf13f4725a7403e06065b44c620c06380a3e57178be9565b18e35ffaab1b434
+Outbound bytes: 6826
+
+Independent byte-level check:
+
+For all four packets, the Engineering View outbound SHA-256 exactly equals
+the SHA-256 of the corresponding frozen packet file after removing only the
+single terminal line-feed byte.
+
+Therefore:
+
+- semantic JSON content is unchanged;
+- field ordering and formatting are otherwise unchanged;
+- each outbound body is exactly one byte shorter than the frozen file object;
+- the difference is attributable to terminal-LF removal at transport/body
+  handling.
+
+Classification:
+
+FILE-OBJECT IDENTITY
+!=
+OUTBOUND-BODY IDENTITY
+
+because the terminal file newline is not transmitted.
+
+This does not alter the substantive T4 v1.1 conditions.
+
+======================================================================
+1. CONDITION A — REPRESENTATION NOT BOUND
+======================================================================
+
+Harmonic result:
+
+Authority Continuity:
+AUTHORITY_CONTINUOUS
+
+Authority signals:
+none
+
+Runtime Admissibility:
+ADMISSIBLE
+
+Execution boundary:
+should_execute = true
+
+Response Binding:
+EXECUTION_ALLOWED
+
+Final decision:
+ALLOW
+
+Determination:
+PERMITTED
+
+Interpretation against frozen condition:
+
+Institutional A1 is supplied in authority provenance/history, but the runtime
+representation consumed by Authority Continuity does not contain the bound
+revocation state.
+
+The existing Harmonic authority-coherence mechanism therefore remains
+non-activated with respect to the institutional A1 supplied elsewhere in the
+transaction.
+
+Classification:
+
+PRE-EXISTING MECHANISM NOT ACTIVATED
++
+REPRESENTATION DEPENDENCY
+
+Non-claim:
+
+This does not show that Harmonic lacks the mechanism.
+It shows that institutional A1 elsewhere in the packet does not automatically
+become the revocation state consumed by Authority Continuity.
+
+======================================================================
+2. CONDITION B — A1 BOUND / PROPAGATION CONFIRMED
+======================================================================
+
+Harmonic result:
+
+Authority Continuity:
+AUTHORITY_LOST
+
+Authority signals:
+- subject_revoked
+- requested_scope_revoked
+
+Runtime Admissibility:
+ESCALATION_REQUIRED
+
+Failed primitive:
+authority
+
+Execution boundary:
+should_execute = false
+requires_escalation = true
+
+Response Binding:
+EXECUTION_ESCALATED
+
+Final decision:
+ESCALATE
+
+Determination:
+ESCALATED
+
+Interpretation against frozen condition:
+
+The same institutional A1 is now represented in the existing runtime-consumed
+revocation state, primary authority is unavailable, and required propagation is
+confirmed.
+
+No new primitive or post-hoc mechanism is required.
+
+Classification:
+
+PRE-EXISTING MECHANISM ACTIVATED
++
+REPRESENTATION DEPENDENCY
+
+======================================================================
+3. D1 — A VERSUS B: REPRESENTATION ACTIVATION
+======================================================================
+
+Prospectively frozen discriminator:
+
+Does changing only the binding of A1 into runtime-consumed authority-coherence
+state materially change Harmonic treatment?
+
+Observed:
+
+A:
+AUTHORITY_CONTINUOUS
+ADMISSIBLE
+ALLOW
+
+B:
+AUTHORITY_LOST
+ESCALATION_REQUIRED
+ESCALATE
+
+The frozen representation-activation bundle therefore produces a material
+change at:
+
+- Authority Continuity;
+- Runtime Admissibility;
+- execution boundary;
+- governed Response Binding;
+- final determination.
+
+D1 VERDICT:
+
+PRE-EXISTING MECHANISM ACTIVATED
++
+REPRESENTATION DEPENDENCY
+
+D1 strongly rejects the hypothesis that the T1 phenomenon was caused simply by
+absence of an authority-coherence mechanism in frozen Harmonic.
+
+The result supports the narrower 0.1A interpretation:
+
+the mechanism exists, but it becomes causally effective only when the relevant
+authority change is represented in the runtime state that the mechanism
+actually consumes.
+
+Important bound:
+
+A-to-B varies a prospectively frozen activation bundle, including
+known_revocations, primary_authority_available, propagation-control activation,
+and propagation-confirmed state.
+
+Therefore D1 establishes causal dependence on the activation representation as
+a controlled bundle.
+
+It does not isolate the independent marginal effect of every field in that
+bundle.
+
+======================================================================
+4. CONDITION C — A1 BOUND / PROPAGATION UNCONFIRMED
+======================================================================
+
+Harmonic result:
+
+Authority Continuity:
+AUTHORITY_LOST
+
+Authority signals:
+- revocation_propagation_unconfirmed
+- subject_revoked
+- requested_scope_revoked
+
+Runtime Admissibility:
+ESCALATION_REQUIRED
+
+Execution boundary:
+should_execute = false
+requires_escalation = true
+
+Response Binding:
+EXECUTION_ESCALATED
+
+Final decision:
+ESCALATE
+
+Determination:
+ESCALATED
+
+The pre-existing propagation control is therefore visibly engaged.
+
+======================================================================
+5. D2 — B VERSUS C: PROPAGATION ACTIVATION
+======================================================================
+
+Prospectively frozen discriminator:
+
+Does required-but-unconfirmed propagation produce a distinct native coherence
+state from confirmed propagation?
+
+Observed:
+
+B authority signals:
+- subject_revoked
+- requested_scope_revoked
+
+C authority signals:
+- revocation_propagation_unconfirmed
+- subject_revoked
+- requested_scope_revoked
+
+Both B and C retain:
+
+AUTHORITY_LOST
+ESCALATION_REQUIRED
+ESCALATE
+
+D2 VERDICT:
+
+PRE-EXISTING MECHANISM ACTIVATED
++
+PROPAGATION DEPENDENCY AT SIGNAL / CAUSAL-REASON LEVEL
++
+TOP-LINE OUTCOME INVARIANT
+
+The frozen Harmonic implementation natively distinguishes propagation-
+unconfirmed from propagation-confirmed state.
+
+However, the top-line result does not change because known revocation already
+independently extinguishes authority in both B and C.
+
+Thus propagation confirmation is discriminated internally but is
+outcome-masked in this particular case by the independently sufficient
+revocation conditions.
+
+Non-claim:
+
+T4 v1.1 does not establish the marginal effect of propagation confirmation in a
+case where no independent revocation-loss signal is present.
+
+======================================================================
+6. CONDITION D — RUNTIME CURRENT / PROVENANCE INCOMPLETE
+======================================================================
+
+Harmonic operative result:
+
+Authority Continuity:
+AUTHORITY_LOST
+
+Authority signals:
+- subject_revoked
+- requested_scope_revoked
+
+Runtime Admissibility:
+ESCALATION_REQUIRED
+
+Response Binding:
+EXECUTION_ESCALATED
+
+Final decision:
+ESCALATE
+
+Determination:
+ESCALATED
+
+This is substantively identical to B at the operative authority/execution
+level.
+
+Input witness difference:
+
+B:
+state_provenance.evidence_ref_count = 2
+
+D:
+state_provenance.evidence_ref_count = 1
+
+Yet the constitutional present-state projection reports in BOTH B and D:
+
+source_evidence_refs = []
+
+evidence_lineage_present = false
+
+overall = partially_reconstructable
+
+Engineering View summary in both:
+State Provenance — Not provided.
+
+======================================================================
+7. D3 — B VERSUS D: OPERATIVE STATE VS PROVENANCE
+======================================================================
+
+Prospectively frozen discriminator:
+
+Can Harmonic preserve the same operative authority treatment while
+provenance/reconstructability changes?
+
+Observed:
+
+Operative authority treatment:
+unchanged.
+
+Runtime admissibility:
+unchanged.
+
+Final binding:
+unchanged.
+
+Input provenance witness:
+changed from two evidence references to one.
+
+Constitutional reconstructability result:
+unchanged.
+
+Therefore the exact D3 proposition is NOT demonstrated because the
+reconstructability result itself does not discriminate B from D.
+
+D3 VERDICT:
+
+OPERATIVE OUTCOME INDEPENDENT OF THE TESTED INPUT-LINEAGE REDUCTION
++
+PROVENANCE DEPENDENCY NOT DEMONSTRATED
++
+PROVENANCE-PROJECTION INSENSITIVITY OBSERVED
+
+Within the preserved output, Harmonic records the reduced input evidence count
+in the harness request witness, but the constitutional present-state projection
+drops supplied source evidence references in both B and D.
+
+This means that the B/D provenance manipulation is visible at the harness
+witness boundary but is not propagated into a distinct constitutional
+reconstructability state.
+
+This repeats the provenance/projection discrepancy already observed before T4.
+
+======================================================================
+8. CROSS-CONDITION ADJUDICATION
+======================================================================
+
+D1:
+PRE-EXISTING MECHANISM ACTIVATED
++
+REPRESENTATION DEPENDENCY
+
+D2:
+PRE-EXISTING MECHANISM ACTIVATED
++
+PROPAGATION DEPENDENCY AT SIGNAL LEVEL
++
+TOP-LINE OUTCOME INVARIANT
+
+D3:
+PROVENANCE DEPENDENCY NOT DEMONSTRATED
++
+PROVENANCE-PROJECTION INSENSITIVITY OBSERVED
+
+Cross-test conclusion:
+
+The frozen T4 v1.1 evidence materially narrows the residual T1 question.
+
+The observed T1/T4-A ALLOW behavior is not best explained as mechanism absence.
+
+It is better explained, within the frozen Harmonic implementation, as
+non-activation of pre-existing runtime authority-coherence mechanisms because
+institutional A1 was not bound into the representation those mechanisms
+consume.
+
+When A1 is bound into that representation, the existing mechanism produces
+AUTHORITY_LOST and prevents ordinary execution.
+
+No architectural extension is required for that tested runtime response.
+
+======================================================================
+9. EFFECT ON THE BILATERAL BOUNDARY QUESTION
+======================================================================
+
+The following proposition is now weakened further:
+
+"Harmonic lacks the mechanism needed to make changed authority operative."
+
+T4 v1.1 demonstrates that frozen Harmonic already contains an operative
+mechanism once changed authority is bound into its runtime-consumed state.
+
+The surviving question therefore shifts upstream from mechanism existence to
+representation responsibility:
+
+WHAT ENSURES THAT A LEGITIMATELY ESTABLISHED INSTITUTIONAL AUTHORITY CHANGE IS
+CORRECTLY AND TIMELY BOUND INTO THE RUNTIME STATE CONSUMED BY AN ALREADY-
+EXISTING AUTHORITY-COHERENCE MECHANISM?
+
+This is a responsibility / representation / integration question.
+
+T4 v1.1 does not establish that this function is unowned.
+
+It may be owned by:
+- an upstream authority source;
+- a policy administration/distribution function;
+- an integration or adapter layer;
+- an access-control or capability-revocation mechanism;
+- a configuration/state-distribution architecture;
+- another established governance/control architecture.
+
+Accordingly:
+
+NO GAP OR SEAM CONSTRUCT IS ADMITTED.
+
+The next burden is established-owner / absorption testing.
+
+======================================================================
+10. SEPARATE FINDINGS PRESERVED
+======================================================================
+
+A. TIMEBASE
+
+T4 v1.0 already established a separate pre-execution methodological finding:
+
+packet identity alone does not preserve a time-sensitive execution condition
+when live evaluation depends on external wall-clock state.
+
+That finding remains separate from T4 v1.1.
+
+B. PROVENANCE PROJECTION
+
+T4 v1.1 strengthens the repeated observation that supplied
+present_state_provenance evidence references are not retained in the
+constitutional present-state source_evidence_refs projection.
+
+This does not invalidate the authority determinations.
+
+It remains a separate reconstructability/projection finding requiring its own
+materiality test.
+
+C. DOWNSTREAM EFFECT
+
+All Engineering Views state:
+
+downstream_execution_enforced = false
+
+and:
+
+Execution Status = NOT_EXECUTED_BY_HARMONIC.
+
+Therefore T4 v1.1 demonstrates governed response binding inside Harmonic's
+declared boundary.
+
+It does not demonstrate downstream executor effect or system-wide revocation
+propagation.
+
+======================================================================
+11. CURRENT SCIENTIFIC POSITION
+======================================================================
+
+T4 v1.1 succeeds as a discriminator.
+
+It shows:
+
+1. Representation activation materially changes the Harmonic authority and
+   execution result without architectural extension.
+
+2. The pre-existing propagation-confirmation control is natively exercised,
+   although its marginal effect on the final decision is masked by independent
+   revocation-loss signals in this test.
+
+3. The tested input-provenance reduction does not change operative authority
+   treatment and does not produce a distinct constitutional reconstructability
+   state, because supplied evidence references are already absent from that
+   projection in the control condition.
+
+4. The broad mechanism-absence interpretation of T1 should remain withdrawn.
+
+5. The strongest remaining research question concerns ownership and assurance
+   of institutional-to-runtime representation binding, not existence of the
+   runtime coherence mechanism itself.
+
+Next scientific gate:
+
+ESTABLISHED-OWNER / ABSORPTION TESTING
+
+before:
+- naming a seam;
+- claiming novelty;
+- extending either architecture.
+
+END OF T4 v1.1 INDEPENDENT ADJUDICATION RECORD v0.1
