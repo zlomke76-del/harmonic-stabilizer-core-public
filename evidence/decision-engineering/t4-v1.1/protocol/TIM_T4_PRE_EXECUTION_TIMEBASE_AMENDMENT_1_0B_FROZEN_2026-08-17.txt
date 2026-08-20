@@ -1,0 +1,127 @@
+TIM PROJECT — DE BOUNDARY
+
+T4 PRE-EXECUTION TIMEBASE AMENDMENT 1.0B — FROZEN
+
+Date frozen:
+17 August 2026
+
+Participants / architecture owners:
+Wojciech Z. Kaleta, PhD — Decision Engineering
+Tim Zlomke — Harmonic
+
+Status:
+BILATERALLY APPROVED / FROZEN
+NO T4 v1.0 EXECUTION OCCURRED
+T4 v1.0 PACKETS REMAIN PRESERVED, HASH-BOUND AND UNEXECUTED
+NO HARMONIC IMPLEMENTATION CHANGE
+NO EXPECTED SYSTEM OUTCOME
+
+Parent records:
+- TIM_T4_FROZEN_PROTOCOL_v1_0_2026-08-17
+- TIM_T4_FROZEN_PACKET_SET_v1_0_2026-08-17
+- PASS 4 Amendment 0.1A
+
+BILATERAL APPROVAL:
+Tim Zlomke approved Amendment Candidate 1.0B as written and approved all seven
+approval-gate conditions. Wojciech Z. Kaleta freezes this record accordingly.
+
+1. PRE-EXECUTION FINDING
+
+The deployed /api/evaluate path calls the Governance Pack without supplying a
+deterministic evaluation clock.
+
+evaluateGovernancePack therefore defaults to:
+
+new Date()
+
+Authority Continuity evaluates revocation freshness against that wall-clock time.
+
+The live execution path therefore does not preserve the prospectively fixed
+2026-08-17T09:05:00Z evaluation reference time.
+
+No T4 v1.0 packet was executed or modified.
+
+2. CLASSIFICATION
+
+EXTERNAL TIMEBASE DEPENDENCY
++
+REPLAY NON-DETERMINISM FOR TIME-SENSITIVE FRESHNESS CONDITIONS
+
+Bounded formulation:
+
+Exact Packet Replay does not by itself fully determine the result of a
+time-sensitive authority-freshness test when evaluation time is supplied by
+external wall-clock state rather than by the frozen packet or a deterministic
+replay clock.
+
+Therefore:
+
+PACKET IDENTITY
+!=
+EXECUTION-CONDITION IDENTITY
+
+for a time-sensitive freshness condition unless time is controlled or rendered
+immaterial.
+
+3. PRESERVATION RULE
+
+T4 v1.0 remains:
+- preserved;
+- hash-bound;
+- unexecuted;
+- methodologically superseded for live testing by T4 v1.1.
+
+Do not:
+- alter v1.0 timestamps;
+- widen the five-minute threshold;
+- modify /api/evaluate to inject time while describing the test as unchanged;
+- repair or rerun T1;
+- infer any expected T4 result.
+
+4. APPROVED T4 v1.1 DIRECTION
+
+Freshness is removed from the active discriminator.
+
+T4-A:
+Institutional A1 complete in provenance/history.
+Runtime revocation representation not activated.
+continuity_checks absent.
+known_revocations empty.
+primary_authority_available true.
+propagation_confirmed absent.
+
+T4-B:
+Same institutional A1 and same execution.
+A1 bound into known_revocations.
+primary_authority_available false.
+require_propagation_confirmation true.
+propagation_confirmed true.
+revocation_check_fresh_after_minutes absent/unconfigured.
+
+T4-C:
+Identical to T4-B except propagation_confirmed false.
+
+T4-D:
+Operative runtime state identical to T4-B.
+Provenance lineage incomplete.
+revocation_check_fresh_after_minutes absent/unconfigured.
+
+Prospective discriminators:
+D1 — A vs B: representation activation.
+D2 — B vs C: propagation activation.
+D3 — B vs D: operative state versus provenance/reconstructability.
+
+Freshness/timebase is deferred to a separate prospectively controlled test.
+
+5. SCIENTIFIC BOUNDARY
+
+This finding is not:
+- a general failure claim against Harmonic;
+- a new construct;
+- a novelty claim;
+- evidence that the authority-coherence mechanism is absent.
+
+It is a preserved pre-execution methodological finding concerning the live
+timebase dependency of the frozen execution path.
+
+END OF FROZEN AMENDMENT 1.0B
