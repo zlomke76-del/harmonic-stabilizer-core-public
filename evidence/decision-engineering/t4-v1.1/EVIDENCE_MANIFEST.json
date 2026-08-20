@@ -1,0 +1,103 @@
+{
+  "record": "Harmonic T4 v1.1 Evidence Archive",
+  "archive_status": "evidence_only_no_runtime_change",
+  "runtime_under_test": "Harmonic v4.0.0",
+  "controlling_frozen_zip": {
+    "file": "TIM_T4_v1_1_FROZEN_PACKET_SET_EXACT_b6f99afc_2026-08-17.zip",
+    "sha256": "b6f99afcc1f8ebdd7825441cf6228f037a3d62e4403946ad4b313d9880569917"
+  },
+  "transport_envelope": {
+    "file": "TIM_T4_v1_1_EXACT_FROZEN_ZIP_TRANSPORT_ENVELOPE_2026-08-18.tar",
+    "sha256": "6bfc5b87e1891c42f919bc1c8cba7d5fb4d35dd8b7f0b4adc7709d697dbd988b",
+    "controlling": false
+  },
+  "frozen_packets": {
+    "A": {
+      "file": "T4-v1_1-A_FROZEN_PACKET_2026-08-17.json",
+      "sha256": "2aa3e104d3d9eb8d8f750c45f23cb56853e363969b002f3c9cb8ff637f256857",
+      "bytes": 6343
+    },
+    "B": {
+      "file": "T4-v1_1-B_FROZEN_PACKET_2026-08-17.json",
+      "sha256": "66e61cec8e413ecfbde59e44e367936c14fcbf22489c79b30e4dadee18356986",
+      "bytes": 6829
+    },
+    "C": {
+      "file": "T4-v1_1-C_FROZEN_PACKET_2026-08-17.json",
+      "sha256": "7b6068a8a05c2ada70f5863ed7750d7c1ef04a9ae9dc2ffbae83b6ff1d615955",
+      "bytes": 6834
+    },
+    "D": {
+      "file": "T4-v1_1-D_FROZEN_PACKET_2026-08-17.json",
+      "sha256": "9df59ada95d0120853eb185fa014cbe425d9e79b782cd0aa56f4b5c94757977d",
+      "bytes": 6827
+    }
+  },
+  "outbound_http_bodies": {
+    "A": {
+      "sha256": "7039576d38ef28cf2b4d62f24c20a1a73d814b7596d64cbf74ce540b7ed66567",
+      "bytes": 6342,
+      "result": "PERMITTED",
+      "authority": "AUTHORITY_CONTINUOUS"
+    },
+    "B": {
+      "sha256": "dbf4b0fea8879211181d04e86fb1a67dbc30ddb6b94a66c9be1cd3adf509f134",
+      "bytes": 6828,
+      "result": "ESCALATED",
+      "authority": "AUTHORITY_LOST"
+    },
+    "C": {
+      "sha256": "99b0892f8f81b5804e1ce54449a1474cf46167258e814daf8de78d066e7714c8",
+      "bytes": 6833,
+      "result": "ESCALATED",
+      "authority": "AUTHORITY_LOST"
+    },
+    "D": {
+      "sha256": "fcf13f4725a7403e06065b44c620c06380a3e57178be9565b18e35ffaab1b434",
+      "bytes": 6826,
+      "result": "ESCALATED",
+      "authority": "AUTHORITY_LOST"
+    }
+  },
+  "engineering_view_outputs": {
+    "A": {
+      "file": "Engineering_View_A.pdf",
+      "sha256": "a7d89b42a66670086f72665ced031bd935144263e8f53247b5fac84f96d7d482",
+      "bytes": 98249
+    },
+    "B": {
+      "file": "Engineering_View_B.pdf",
+      "sha256": "a8254570c00bab74b4e05e38b79ab8cdeefc8f5d3e3009494e4b35704a87e327",
+      "bytes": 103833
+    },
+    "C": {
+      "file": "Engineering_View_C.pdf",
+      "sha256": "5b6b8ef414b310b537bd9d5fb7e4bff422a3e44b4b2c9c0bd15273c4f95da3ab",
+      "bytes": 106883
+    },
+    "D": {
+      "file": "Engineering_View_D.pdf",
+      "sha256": "2a482e736257eba1f445266f42f61983c4344cda29a65e5a9de222da37568d7f",
+      "bytes": 105281
+    }
+  },
+  "independent_adjudication": {
+    "zip_file": "TIM_T4_v1_1_INDEPENDENT_ADJUDICATION_RECORD_v0_1_2026-08-18.zip",
+    "zip_sha256": "2147506b7774460d5f9f077154e2d38fbdf6b7bc071b6ede986301b0c912f6e4",
+    "record_file": "TIM_T4_v1_1_INDEPENDENT_ADJUDICATION_RECORD_v0_1_2026-08-18.txt",
+    "record_sha256": "89190605f79998c17ed53667a4b782319e7de363eb0e6a17c167e8d2b8be8ba9"
+  },
+  "final_bounds": {
+    "D1": "SUPPORTED — representation-activation bundle effect; individual field causality not isolated",
+    "D2": "SUPPORTED AT SIGNAL/REASON LEVEL — top-line marginal effect not isolated",
+    "D3": "NOT DEMONSTRATED — provenance-projection insensitivity observed"
+  },
+  "transport_bound": "semantically and structurally unchanged with terminal-LF transport normalization",
+  "non_claims": [
+    "This archive does not modify Harmonic runtime logic or configuration.",
+    "T4 v1.1 does not isolate the independent marginal effect of each A-to-B activation field.",
+    "T4 v1.1 does not isolate propagation confirmation as an independent top-line decision cause.",
+    "T4 v1.1 does not demonstrate provenance-dependent reconstructability.",
+    "The surviving integration question is not asserted as a novel seam or Harmonic-owned responsibility."
+  ]
+}
