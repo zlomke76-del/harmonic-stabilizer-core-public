@@ -1,175 +1,88 @@
-# Harmonic — The Governance API for Developers
+# SCGA-BS-003 → BS-005 — Preserved Examination Lineage
 
-**Your AI can act. Harmonic determines whether it should.**
+## Status
 
-### One API call before execution.
+**Evidence record only. This directory does not modify Harmonic runtime behavior, primitive semantics, request contracts, or execution policy.**
 
-```text
-POST /api/evaluate
-```
+This record preserves the adjudicative lineage of three prospective examinations of a narrow Harmonic execution-boundary proposition. Predecessor findings remain findings; BS-005 does not rewrite BS-003 or BS-004.
 
-Harmonic is runtime governance infrastructure for consequence-bearing AI and automated systems. Immediately before consequence, it evaluates whether the conditions supporting continuation remain admissible now.
+## Claim boundary ultimately supported
 
-**Start here:** [`QUICKSTART.md`](./QUICKSTART.md) · [`Node example`](./examples/node-evaluate.js) · [`Python example`](./examples/python_evaluate.py) · [`Public boundary`](./V4_PUBLIC_BOUNDARY.md) · [`Frozen evidence`](./evidence/decision-engineering/t4-v1.1/)
+Under the BS-005 frozen examination, historical validity did not silently retain consequential standing after the examined material change in present state.
 
-> **Public repository boundary**
-> This repository contains the public architecture contract, public-safe reference/demo evaluator, integration examples, and frozen evidence published for Harmonic v4.0.0. It **does not contain the sovereign production Harmonic runtime**.
+This is a **bounded implementation finding**, not a claim that Harmonic detects every material change in reality and not a claim about downstream real-world execution enforcement.
 
----
+## Lineage
 
-## What Harmonic asks
+| Examination | Positive control | Negative / target | Falsifier | Final reading |
+|---|---|---|---|---|
+| SCGA-BS-003 | **FAIL** — `REFUSED`; native packet omitted the required obligation witness | **TARGET_SURVIVES_THIS_TEST** — `REFUSED` | **NOT TRIGGERED** | Full discrimination **NOT ESTABLISHED**. Positive control was constitutionally incomplete. Preserved; no rerun/repair/remap. |
+| SCGA-BS-004 | **FAIL under frozen criterion** — expected `PERMITTED`, observed `CONSTRAINED / admissible=true / action=constrain` | **TARGET_SURVIVES_THIS_TEST** — `REFUSED / admissible=false` | **NOT TRIGGERED** | Full counterfactual discrimination **NOT ESTABLISHED** because the frozen PC criterion required `PERMITTED`. Source review later established that ordinary `PERMITTED` is not reachable for the same native high-consequence class while the high-consequence warning survives. Preserved; no retrospective remap. |
+| SCGA-BS-005 | **PASS** — `CONSTRAINED / admissible=true / action=constrain` | **TARGET_SURVIVES_THIS_TEST** — `REFUSED / admissible=false / action=refuse` | **NOT TRIGGERED** | **SUPPORTED SURVIVAL CONDITION SATISFIED** for the frozen proposition. |
 
-> **Do the conditions that make this continuation admissible remain supportable now?**
+## BS-003 preserved identifiers
 
-Harmonic does not replace upstream cognition and does not infer domain truth merely from prose. It evaluates supplied, attributable runtime state across constitutional conditions such as present-state support, authority continuity, obligations, consequence boundaries, and continuation requirements.
+- Positive-control event: `712709de-1e4c-4283-9405-25ba7c79f6a6`
+- Negative event: `d7a6b368-77bf-43fc-a1db-2aab848eee92`
+- Frozen package root SHA-256: `bb8c8ff51bc08fb96ccfeddbf9178cff417f96cac839979d66749acaa8b376ab`
+- Frozen ZIP SHA-256: `e600ba54002a69d2ee07a05cedad8b95495af10646766f265c852bb610d3c0eb`
+- Preserved execution-evidence ZIP SHA-256: `a466a47276a9018debd2c77b75a75a56954b1b9afc9044c58c35a37a7b5d4033`
 
-## Public-repository boundary
+The BS-003 positive control reached current Understanding, Reality Contact, and Authority Continuity but failed closed at Obligation Continuity (`NOT_PROVIDED / admissible=false`). The negative also refused, including `UNDERSTANDING_INADMISSIBLE`. Because the positive control failed, the examination did not establish full discrimination.
 
-This repository **does not contain the sovereign production Harmonic runtime**.
+## BS-004 preserved reading
 
-The JavaScript evaluator under `api/evaluate.js` is a **public-safe reference/demo evaluator retained for integration examples and local experimentation**. It is not the production v4.0.0 constitutional runtime, and its internal scoring model must not be treated as a description of the private production implementation.
+BS-004 prospectively closed the missing-obligation issue. Its positive control reached:
 
-The production runtime remains internally controlled. Public consumers should distinguish:
+- `UNDERSTANDING_CURRENT / admissible=true`
+- `CONTACT_CONFIRMED / admissible=true`
+- `AUTHORITY_CONTINUOUS / admissible=true`
+- `OBLIGATIONS_SATISFIED / admissible=true`
+- `BOUNDARY_ELEVATED / admissible=true`
+- runtime `CONDITIONALLY_ADMISSIBLE / admissible=true / action=constrain`
 
-- **architecture contract** — documented here;
-- **reference/demo evaluator** — included here for public experimentation;
-- **production Harmonic runtime** — sovereign implementation, not published here;
-- **frozen evidence** — preserved here where publication is appropriate.
+The top-level result was therefore `CONSTRAINED`, not the frozen expected `PERMITTED`; the positive control remained a frozen FAIL. The negative was `REFUSED / admissible=false`, but the examination could not be upgraded to full discrimination after the fact.
 
-See [`V4_PUBLIC_BOUNDARY.md`](./V4_PUBLIC_BOUNDARY.md).
+Subsequent source inspection established that the surviving `high_consequence_level` warning is native to the examined high-consequence class and drives the constrained-but-admissible disposition. That source finding explains the mismatch; it does **not** rewrite BS-004.
 
----
+## BS-005 supported result
 
-## Harmonic v4.0.0 public contract
+BS-005 was constituted prospectively against the established native high-consequence contract rather than retroactively remapping BS-004.
 
-The production single-call contract is identified as:
+Observed result:
 
-- Runtime: `4.0.0`
-- API contract: `v4-single-call`
-- Canonical evaluation boundary: `POST /api/evaluate`
+- Positive control: `CONSTRAINED / admissible=true / action=constrain` — **PASS** under the frozen BS-005 criterion.
+- Negative after one controlled material state transition: `REFUSED / admissible=false / action=refuse` — **TARGET SURVIVES THIS TEST**.
+- Precommitted falsifier: **NOT TRIGGERED**.
+- `high_consequence_level` warning remained common to both specimens.
+- Reality Contact was `CONTACT_CONFIRMED` in both specimens.
+- The material state transition / invalidated prior-state standing was the controlling discriminator in the negative specimen.
+- No BS-006 was required for this proposition.
 
-Conceptually:
+## What this establishes
 
-```text
-Upstream cognition / institutional state
-                  ↓
-          proposed continuation
-                  ↓
-              Harmonic
-                  ↓
- constitutional determination
-                  ↓
-        execution directive
-                  ↓
-        downstream executor
-```
+The BS-005 evidence supports the narrow proposition that, in the examined native governed disposition path, a historically valid state did not silently retain consequential standing after the controlled material state transition invalidated the prior-state standing required for the same consequence.
 
-Harmonic's canonical constitutional determinations are:
+## What this does not establish
 
-- `PERMITTED`
-- `CONSTRAINED`
-- `ESCALATED`
-- `REFUSED`
-- `EMERGENCY_CONTINUITY`
+This record does **not** establish:
 
-Operational directives such as `allow`, `constrain`, `escalate`, and `block/refuse` are **execution-facing instructions**, not substitutes for the constitutional determination vocabulary.
+- downstream executor compliance or real-world consequence prevention;
+- omniscient detection of material conditions outside Harmonic's represented/observable state;
+- universal correctness across every domain, packet, consequence class, or possible ΔN;
+- architectural equivalence to another governance system;
+- that BS-003 or BS-004 passed;
+- that later source or test-coherence changes caused or retroactively validate the BS-005 production result.
 
-## Execution boundary
+## Preservation rule
 
-Harmonic separates determination from downstream execution.
+The lineage is append-only in meaning:
 
-A governed response may bind the response contract while still recording that Harmonic itself did not perform the downstream act. In v4 this distinction is explicit:
+1. A failed or indeterminate predecessor remains where it landed.
+2. A successor must be constituted prospectively.
+3. A successor result does not confer standing backward onto its predecessor.
+4. Claim language must remain bounded to the evidence actually earned.
 
-```json
-{
-  "response_binding_enforced": true,
-  "binding_scope": "governed_response_contract_only",
-  "downstream_execution_enforced": false
-}
-```
+## Artifact availability
 
-A constitutional transaction can therefore state `NOT_EXECUTED_BY_HARMONIC` while still determining whether execution may continue.
-
-## Present state and epistemic discipline
-
-V4 preserves the distinction between:
-
-- state supplied to the runtime;
-- attributable provenance for that state;
-- whether the state is sufficiently reconstructable;
-- the constitutional determination made against the supplied state.
-
-Missing provenance or institutional knowledge is not silently manufactured. Upstream cognition and institutional authority remain sovereign.
-
----
-
-## Frozen public evidence: Decision Engineering T4 v1.1
-
-The repository includes an evidence-only archive at:
-
-[`evidence/decision-engineering/t4-v1.1/`](./evidence/decision-engineering/t4-v1.1/)
-
-The archive records a prospectively frozen four-condition examination against Harmonic v4.0.0. It was added **after** the runtime freeze and does not modify runtime behavior.
-
-Final bounded reading preserved in the evidence record:
-
-- **D1 — supported as a representation-activation bundle effect; individual field causality not isolated.**
-- **D2 — propagation dependency demonstrated at the signal/reason level; top-line marginal effect not isolated.**
-- **D3 — provenance dependency not demonstrated; provenance-projection insensitivity observed.**
-
-The broad mechanism-absence interpretation was withdrawn.
-
-The surviving research question is preserved without a novelty claim:
-
-> **What ensures that a legitimately established institutional authority change is correctly and timely bound into the runtime state consumed by an already-existing authority-coherence mechanism?**
-
-Comparator / established-owner absorption testing remains the appropriate next step before naming a seam or extending the architecture.
-
----
-
-## Public reference evaluator
-
-For local/public-safe experimentation, this repository still exposes a simplified demonstrator at `api/evaluate.js` and the static playground.
-
-That demonstrator is useful for:
-
-- SDK wiring;
-- request/response mechanics;
-- public examples;
-- local deployment exercises;
-- simple bounded-decision demonstrations.
-
-It is **not evidence of production Harmonic behavior** and should not be used to infer private primitive logic or the v4 production implementation.
-
-Run local checks:
-
-```bash
-npm run check
-npm run test:vectors
-npm run verify:evidence
-npm run verify:public-boundary
-```
-
-## Repository structure
-
-```text
-QUICKSTART.md                       developer-first integration path
-examples/                           minimal Node and Python call examples
-api/                                public-safe reference/demo evaluator
-sdk/                                public integration helpers
-scripts/                            validation utilities
-public/                             static public deployment assets
-evidence/decision-engineering/      frozen public evidence archives
-docs.html                           public contract documentation
-V4_PUBLIC_BOUNDARY.md               architecture/repository boundary
-```
-
-## Security and private surfaces
-
-This public release intentionally excludes operational infrastructure including customer provisioning, billing, private API-key administration, private telemetry, authenticated evidence stores, and sovereign production-runtime implementation details.
-
-Do not place production credentials in this repository.
-
-## License
-
-Licensed under the Apache License, Version 2.0. See [`LICENSE`](./LICENSE).
+This repository snapshot records the adjudicative findings and the known BS-003 artifact identities above. It does **not** manufacture or reconstruct missing frozen BS-004/BS-005 raw execution bundles. If those exact preserved artifacts are published later, they should be added as immutable evidence objects with their original digests and linked from this record without changing the findings above.

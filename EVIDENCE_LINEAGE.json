@@ -1,0 +1,46 @@
+{
+  "record": "SCGA-BS-003-to-BS-005",
+  "record_date": "2026-09-04",
+  "record_type": "evidence-lineage-metadata",
+  "runtime_modified": false,
+  "findings": [
+    {
+      "id": "SCGA-BS-003",
+      "positive_control": "FAIL",
+      "negative": "TARGET_SURVIVES_THIS_TEST",
+      "falsifier": "NOT_TRIGGERED",
+      "full_discrimination": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "SCGA-BS-004",
+      "positive_control": "FAIL_UNDER_FROZEN_CRITERION",
+      "observed_pc": "CONSTRAINED/admissible=true/action=constrain",
+      "negative": "TARGET_SURVIVES_THIS_TEST",
+      "falsifier": "NOT_TRIGGERED",
+      "full_discrimination": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "SCGA-BS-005",
+      "positive_control": "PASS",
+      "observed_pc": "CONSTRAINED/admissible=true/action=constrain",
+      "negative": "TARGET_SURVIVES_THIS_TEST",
+      "observed_negative": "REFUSED/admissible=false/action=refuse",
+      "falsifier": "NOT_TRIGGERED",
+      "finding": "SUPPORTED_SURVIVAL_CONDITION_SATISFIED"
+    }
+  ],
+  "bs003": {
+    "positive_event_id": "712709de-1e4c-4283-9405-25ba7c79f6a6",
+    "negative_event_id": "d7a6b368-77bf-43fc-a1db-2aab848eee92",
+    "frozen_package_root_sha256": "bb8c8ff51bc08fb96ccfeddbf9178cff417f96cac839979d66749acaa8b376ab",
+    "frozen_zip_sha256": "e600ba54002a69d2ee07a05cedad8b95495af10646766f265c852bb610d3c0eb",
+    "execution_evidence_zip_sha256": "a466a47276a9018debd2c77b75a75a56954b1b9afc9044c58c35a37a7b5d4033"
+  },
+  "claim_boundary": "Historical validity did not silently retain consequential standing after the examined material change in present state.",
+  "nonclaims": [
+    "downstream real-world execution enforcement",
+    "omniscient or universal material-change detection",
+    "universal domain correctness",
+    "retrospective PASS for BS-003 or BS-004"
+  ]
+}
